@@ -2,9 +2,10 @@
 #include "SDB.h"
 
 void SDB_action(uint8 choice) {
-    uint32 id;
-    uint8 count;
-    uint32 list[10];
+    uint32 id;// Variable to store student ID
+    uint8 count;// Variable to store the number of IDs
+    uint32 list[10];// Array to store student IDs
+    // Perform action based on user choice
 
     switch (choice) {
         case 1:
@@ -48,10 +49,10 @@ void SDB_action(uint8 choice) {
 }
 
 void SDB_APP() {
-    uint8 choice;
-    do {
+    uint8 choice; 
+    do { // Display menu and get user choice
         printf("\n1. Add Entry\n2. Get Used Size\n3. Read Student Data\n4. List All IDs\n5. Check ID Exists\n6. Delete Entry\n7. Check if Full\n0. Exit\nChoice: ");
         scanf("%hhu", &choice);
-        SDB_action(choice);
+        SDB_action(choice); // Call the action function based on user choice
     } while (choice != 0);
 }

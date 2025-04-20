@@ -44,10 +44,11 @@ bool SDB_AddEntry() {
 void SDB_DeletEntry(uint32 id) {
     for (uint8 i = 0; i < current_size; i++) {
         if (database[i].Student_ID == id) {
-            for (uint8 j = i; j < current_size - 1; j++) {
+            for (uint8 j = i; j < current_size - 1; j++) {// Shift all entries to the left
                 database[j] = database[j + 1];
             }
-            current_size--;
+            current_size--; // Decrease the size of the database by 1
+            printf("Student ID %u deleted successfully.\n", id);
             return;
         }
     }
@@ -55,7 +56,7 @@ void SDB_DeletEntry(uint32 id) {
 }
 bool SDB_ReadEntry(uint32 id) {
     for (uint8 i = 0; i < current_size; i++) {
-        if (database[i].Student_ID == id) {
+        if (database[i].Student_ID == id) {// Check if the ID matches
             printf("Student ID: %u\n", database[i].Student_ID);
             printf("Student Year: %u\n", database[i].Student_year);
             printf("Course 1 ID: %u, Grade: %u\n", database[i].Course1_ID, database[i].Course1_grade);
@@ -68,9 +69,9 @@ bool SDB_ReadEntry(uint32 id) {
     return false;
 }
 void SDB_GetList(uint8* count, uint32* list) {
-    *count = current_size;
+    *count = current_size; // Set the count to the current size of the database
     for (uint8 i = 0; i < current_size; i++) {
-        list[i] = database[i].Student_ID;
+        list[i] = database[i].Student_ID; // Fill the list with student IDs
     }
 }
 bool SDB_IsIdExist(uint32 id) {
